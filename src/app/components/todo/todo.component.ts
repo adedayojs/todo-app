@@ -12,14 +12,14 @@ export class TodoComponent implements OnInit {
   form!: FormGroup;
   displayedColumns: string[] = ['name', 'done', 'action'];
   todos$ = this.todoService.todos$;
-  todo: Todo[] = [];
+  todos: Todo[] = [];
 
   constructor(private fb: FormBuilder, private todoService: TodoService) {
     this.buildForm();
   }
 
   ngOnInit(): void {
-    this.todos$.subscribe((res) => (this.todo = res));
+    this.todos$.subscribe((res) => (this.todos = res));
   }
 
   addNewTodo(): void {

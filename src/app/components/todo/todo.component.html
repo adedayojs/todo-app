@@ -19,17 +19,17 @@
 
     <div class="todo-list-container">
 
-        <table mat-table [dataSource]="todos$" class="mat-elevation-z8">
+        <table mat-table [dataSource]="todos" class="mat-elevation-z8">
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
                 <th class="table-header" mat-header-cell *matHeaderCellDef> Name. </th>
                 <td class="table-item" mat-cell *matCellDef="let todo"> {{todo.name}} </td>
                 <td mat-footer-cell *matFooterCellDef colspan="3">
-                    <button class="remove-all-done-items" color="warn" *ngIf="todo.length > 0"
+                    <button class="remove-all-done-items" color="warn" *ngIf="todos.length > 0"
                         (click)="removeAllDoneTodo()" mat-button> Delete All Done Items
                     </button>
-                    <p class="text-center" *ngIf="todo.length < 1">No Todo Item</p>
+                    <p class="text-center" *ngIf="todos.length < 1">No Todo Item</p>
                 </td>
             </ng-container>
 
