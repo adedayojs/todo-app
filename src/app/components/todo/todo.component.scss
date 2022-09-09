@@ -1,0 +1,52 @@
+:host {
+  margin: auto;
+  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+    0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+  padding: 2em;
+}
+
+.text-center {
+  text-align: center;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .title-text {
+    text-align: center;
+    font-size: larger;
+  }
+  .form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .add-button {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto 1em;
+      background: #788394;
+    }
+  }
+}
+
+.todo-list-container {
+  max-height: 500px;
+  overflow: auto;
+  padding: 2em;
+
+  table {
+    margin: 2em auto;
+    .remove-all-done-items {
+      width: 100%;
+    }
+  }
+
+  .table-item,
+  .table-header {
+    padding: 1em 3em;
+  }
+}

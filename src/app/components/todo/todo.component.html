@@ -1,0 +1,64 @@
+<section class="wrapper">
+    <form (ngSubmit)="addNewTodo()">
+        <p class="title-text"> Add New Todo(s)</p>
+        <ng-container [formGroup]="form">
+            <div class="form-wrapper">
+
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="name">
+                    <mat-error>Please Input the name of your todo</mat-error>
+                </mat-form-field>
+
+                <button class="add-button" mat-button>
+                    Add
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </ng-container>
+    </form>
+
+    <div class="todo-list-container">
+
+        <table mat-table [dataSource]="todos$" class="mat-elevation-z8">
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> Name. </th>
+                <td class="table-item" mat-cell *matCellDef="let todo"> {{todo.name}} </td>
+                <td mat-footer-cell *matFooterCellDef colspan="3">
+                    <button class="remove-all-done-items" color="warn" *ngIf="todo.length > 0"
+                        (click)="removeAllDoneTodo()" mat-button> Delete All Done Items
+                    </button>
+                    <p class="text-center" *ngIf="todo.length < 1">No Todo Item</p>
+                </td>
+            </ng-container>
+
+            <!-- Done Column -->
+            <ng-container matColumnDef="done">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> Done </th>
+                <td class="table-item" mat-cell *matCellDef="let todo">
+                    <mat-checkbox matTooltip="Mark as Done" (ngModelChange)="updateTodoStatus(todo)" [(ngModel)]="todo.done"></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+                <th class="table-header" mat-header-cell *matHeaderCellDef> Action </th>
+                <td class="table-item" mat-cell *matCellDef="let todo">
+                    <button  matTooltip="Delete this todo item" mat-button color="warn" (click)="removeTodo(todo)">
+                        Delete
+                        <mat-icon color="warn">delete
+                        </mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr mat-footer-row *matFooterRowDef="['name']" class="example-second-footer-row"></tr>
+
+        </table>
+
+
+    </div>
+</section>
